@@ -1,0 +1,23 @@
+package com.example.ecoparking.repository;
+
+import com.example.ecoparking.model.ParkingSlot;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ParkingSlotRepository extends JpaRepository<ParkingSlot, Long> {
+}
+
+package com.example.ecoparking.repository;
+
+import com.example.ecoparking.model.Vehicle;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
+}
+
+package com.example.ecoparking.repository;
+
+import com.example.ecoparking.model.Payment;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PaymentRepository extends JpaRepository<Payment, Long> {
+}
