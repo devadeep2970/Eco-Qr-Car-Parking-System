@@ -1,0 +1,31 @@
+package com.example.ecoparking.service;
+
+import com.example.ecoparking.model.ParkingSlot;
+import com.example.ecoparking.repository.ParkingSlotRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class ParkingService {
+    @Autowired
+    private ParkingSlotRepository parkingSlotRepository;
+
+    public List<ParkingSlot> getAllSlots() {
+        return parkingSlotRepository.findAll();
+    }
+
+    public ParkingSlot allocateSlot(ParkingSlot slot) {
+        slot.setAvailable(false);
+        return parkingSlotRepository.save(slot);
+    }
+    
+    public void releaseSlot(Long id) {
+        ParkingSlot slot = parkingSlotRepository.findById(id).orElse(null);
+        if (slot != null) {
+            slot.setAvailable(true);
+            parkingSlotRepository.save(slot);
+        }
+    }
+}
