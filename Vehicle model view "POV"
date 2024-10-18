@@ -1,0 +1,15 @@
+package com.example.ecoparking.model;
+
+import javax.persistence.*;
+
+@Entity
+public class Vehicle {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String vehicleNumber;
+    private String owner;
+    private String qrCode;
+
+    // Getters and setters
+}
