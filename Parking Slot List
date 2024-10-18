@@ -1,0 +1,26 @@
+import React, { useState, useEffect } from 'react';
+
+function ParkingSlotList() {
+    const [slots, setSlots] = useState([]);
+
+    useEffect(() => {
+        fetch('/api/parking/slots')
+            .then(response => response.json())
+            .then(data => setSlots(data));
+    }, []);
+
+    return (
+        <div>
+            <h2>Available Parking Slots</h2>
+            <ul>
+                {slots.map(slot => (
+                    <li key={slot.id}>
+                        Slot {slot.id} - {slot.isAvailable ? "Available" : "Occupied"}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+}
+
+export default ParkingSlotList;
